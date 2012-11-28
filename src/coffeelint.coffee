@@ -142,6 +142,22 @@ createError = (rule, attrs = {}) ->
     else
         null
 
+parseCoffeeScriptError = (coffeeError) ->
+    rule = RULES['coffeescript_error']
+
+    message = coffeeError.toString()
+
+    # Parse the line number
+    lineNumber = -1
+    match = /line (\d+)/.exec message
+    lineNumber = parseInt match[1], 10 if match?.length > 1
+    attrs = {
+        message: message
+        level: rule.level
+        lineNumber: lineNumber
+    }
+    return  createError 'coffeescript_error', attrs
+
 # Store suppressions in the form of { line #: type }
 block_config =
     enable: {}
@@ -334,7 +350,11 @@ class LexicalLinter
 
     constructor : (source, config) ->
         @source = source
-        @tokens = CoffeeScript.tokens(source)
+        @errors = []
+        try
+            @tokens = CoffeeScript.tokens(source)
+        catch coffeeError
+            @errors.push parseCoffeeScriptError(coffeeError)
         @config = config
         @i = 0              # The index of the current token we're linting.
         @tokensByLine = {}  # A map of tokens by line.
@@ -345,12 +365,13 @@ class LexicalLinter
 
     # Return a list of errors encountered in the given source.
     lint : () ->
-        errors = []
+        if @errors.length > 0
+            return @errors
         for token, i in @tokens
             @i = i
             error = @lintToken(token)
-            errors.push(error) if error
-        errors
+            @errors.push(error) if error
+        @errors
 
     # Return an error if the given token fails a lint check, false
     # otherwise.
@@ -615,7 +636,7 @@ class ASTLinter
         try
             @node = CoffeeScript.nodes(@source)
         catch coffeeError
-            @errors.push @_parseCoffeeScriptError(coffeeError)
+            @errors.push parseCoffeeScriptError(coffeeError)
             return @errors
         @lintNode(@node)
         @errors
@@ -654,22 +675,6 @@ class ASTLinter
 
         # Return the complexity for the benefit of parent nodes.
         return complexity
-
-    _parseCoffeeScriptError : (coffeeError) ->
-        rule = RULES['coffeescript_error']
-
-        message = coffeeError.toString()
-
-        # Parse the line number
-        lineNumber = -1
-        match = /line (\d+)/.exec message
-        lineNumber = parseInt match[1], 10 if match?.length > 1
-        attrs = {
-            message: message
-            level: rule.level
-            lineNumber: lineNumber
-        }
-        return  createError 'coffeescript_error', attrs
 
 
 
