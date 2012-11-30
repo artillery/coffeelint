@@ -139,7 +139,8 @@ class CSVReporter extends Reporter
     publish : () ->
         for path, errors of @errorReport.paths
             for e in errors
-                f = [path, e.lineNumber, e.level, e.message]
+                # Just delete the commas, works well for the our limited use.
+                f = [path, e.lineNumber, e.level, e.message.replace(/,/g, "")]
                 @print f.join(",")
 
 class JSLintReporter extends Reporter

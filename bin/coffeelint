@@ -228,7 +228,7 @@ CoffeeLint is freely distributable under the MIT license.
           _results1 = [];
           for (_i = 0, _len = errors.length; _i < _len; _i++) {
             e = errors[_i];
-            f = [path, e.lineNumber, e.level, e.message];
+            f = [path, e.lineNumber, e.level, e.message.replace(/,/g, "")];
             _results1.push(this.print(f.join(",")));
           }
           return _results1;
