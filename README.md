@@ -1,3 +1,19 @@
+Artillery coffeelint fork
+=========================
+
+Getting started:
+
+    $ git clone git@github.com:artillery/coffeelint.git
+    $ cd coffeelint
+    $ git remote add upstream git://github.com/clutchski/coffeelint.git
+
+Differences from upstream:
+
+  * This README
+  * Fixes to make it work with Flymake: f2ae6928e5f1c78e20cf1427e8db22a9487f471a and b07790a292138fbf78a7d0534a71e8def18dc65c
+
+----------------------------
+
 CoffeeLint
 ==========
 
