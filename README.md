@@ -1,3 +1,20 @@
+Artillery coffeelint fork
+=========================
+
+Getting started:
+
+    $ git clone git@github.com:artillery/coffeelint.git
+    $ cd coffeelint
+    $ git remote add upstream git://github.com/clutchski/coffeelint.git
+    $ git remote add upstream git://github.com/clutchski/coffeelint.git
+
+Differences from upstream:
+
+  * This README
+  * Fixes npm dependencies that reference the github repo directly (e.g. in package.json: `{... "coffeelint": "git://github.com:artillery/coffeelint.git" ...}`) by including compiled versions of the package (since the source is excluded from the npm package).
+
+----------------------------
+
 CoffeeLint
 ==========
 
