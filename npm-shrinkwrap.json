@@ -2,47 +2,54 @@
   "name": "coffeelint",
   "version": "0.5.5",
   "dependencies": {
-    "optimist": {
-      "version": "0.3.5",
-      "dependencies": {
-        "wordwrap": {
-          "version": "0.0.2"
-        }
-      }
-    },
     "coffee-script": {
-      "version": "1.4.0"
+      "version": "1.6.3",
+      "from": "coffee-script@1.6.3",
+      "resolved": "https://registry.npmjs.org/coffee-script/-/coffee-script-1.6.3.tgz"
     },
     "glob": {
-      "version": "3.1.14",
+      "version": "4.0.0",
+      "from": "glob@>=3.1.9",
+      "resolved": "https://registry.npmjs.org/glob/-/glob-4.0.0.tgz",
       "dependencies": {
+        "inherits": {
+          "version": "2.0.1",
+          "from": "inherits@2",
+          "resolved": "https://registry.npmjs.org/inherits/-/inherits-2.0.1.tgz"
+        },
         "minimatch": {
-          "version": "0.2.9",
+          "version": "0.3.0",
+          "from": "minimatch@^0.3.0",
+          "resolved": "https://registry.npmjs.org/minimatch/-/minimatch-0.3.0.tgz",
           "dependencies": {
             "lru-cache": {
-              "version": "2.0.4"
+              "version": "2.5.0",
+              "from": "lru-cache@2",
+              "resolved": "https://registry.npmjs.org/lru-cache/-/lru-cache-2.5.0.tgz"
             },
             "sigmund": {
-              "version": "1.0.0"
+              "version": "1.0.0",
+              "from": "sigmund@~1.0.0",
+              "resolved": "https://registry.npmjs.org/sigmund/-/sigmund-1.0.0.tgz"
             }
           }
-        },
-        "graceful-fs": {
-          "version": "1.1.14"
-        },
-        "inherits": {
-          "version": "1.0.0"
         }
       }
     },
-    "vows": {
-      "version": "0.6.4",
+    "optimist": {
+      "version": "0.6.1",
+      "from": "optimist@>=0.2.8",
+      "resolved": "https://registry.npmjs.org/optimist/-/optimist-0.6.1.tgz",
       "dependencies": {
-        "eyes": {
-          "version": "0.1.8"
+        "wordwrap": {
+          "version": "0.0.2",
+          "from": "wordwrap@~0.0.2",
+          "resolved": "https://registry.npmjs.org/wordwrap/-/wordwrap-0.0.2.tgz"
         },
-        "diff": {
-          "version": "1.0.4"
+        "minimist": {
+          "version": "0.0.10",
+          "from": "minimist@~0.0.1",
+          "resolved": "https://registry.npmjs.org/minimist/-/minimist-0.0.10.tgz"
         }
       }
     }
